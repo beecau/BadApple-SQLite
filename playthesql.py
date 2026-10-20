@@ -3,7 +3,6 @@ import time
 
 conn = sqlite3.connect("greatapple.db")
 
-# The recursive SQL query owns the entire universe of the playback logic
 pure_sql_payload = """
     WITH RECURSIVE frame_sequence(id) AS (
         SELECT 0
@@ -19,8 +18,7 @@ pure_sql_payload = """
 
 print("\033[2J", end="")
 start_time = time.time()
-
-# Python is just a dumb pipe dumping database rows into the terminal
+#no comments except this
 for i, (frame_text,) in enumerate(conn.execute(pure_sql_payload)):
     print("\033[H" + frame_text, end="")
     
