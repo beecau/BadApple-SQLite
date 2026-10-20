@@ -9,14 +9,12 @@ HEIGHT = 24
 frame_size = WIDTH * HEIGHT
 ASCII_CHARS = " .:-=+*#%@"
 
-# Initialize SQLite database
 conn = sqlite3.connect(db_output_path)
 cursor = conn.cursor()
 
 cursor.execute("DROP TABLE IF EXISTS bad_apple;")
 cursor.execute("CREATE TABLE bad_apple (frame_id INTEGER PRIMARY KEY, frame_data TEXT);")
 
-# FFmpeg command to output raw grayscale frames directly to stdout
 cmd = [
     "ffmpeg",
     "-i",
